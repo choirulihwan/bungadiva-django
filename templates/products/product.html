@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+
+{% load humanize %}
+
+{% load static %}
+
+{% block title %} | {{ product.name }} {% endblock %}
+
+{% block content %}
+
+  <section id="showcase-inner" class="py-5 text-white">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-12">
+          <h1 class="display-4">{{ product.name }}</h1>
+          <p class="lead">
+            <i class="fas fa-map-marker"></i> {{ product.category }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Breadcrumb -->
+  <section id="bc" class="mt-3">
+    <div class="container">
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="{% url 'index' %}">Beranda</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="{% url 'products' %}">Daftar Produk</a>
+          </li>
+          <li class="breadcrumb-item active">{{ product.name }}</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+    <!-- Alerts -->
+    {% include 'partials/_alerts.html' %}
+
+  <!-- Listing -->
+  <section id="listing" class="py-4">
+    <div class="container">
+      <a href="{% url 'products' %}" class="btn btn-light mb-4">Kembali ke daftar produk</a>
+      <div class="row">
+        <div class="col-md-9">
+          <!-- Home Main Image -->
+          <img src="{{ product.photo_main.url }}" alt="" class="img-main img-fluid mb-3">
+          <!-- Thumbnails -->
+
+            <div class="row mb-5 thumbs">
+                {% if product.photo_1 %}
+                <div class="col-md-2">
+                    <a href="{{ product.photo_1.url }}" data-lightbox="home-images">
+                        <img src="{{ product.photo_1.url }}" alt="" class="img-fluid">
+                    </a>
+                </div>
+                {% endif %}
+                {% if product.photo_2 %}
+                <div class="col-md-2">
+                    <a href="{{ product.photo_2.url }}" data-lightbox="home-images">
+                        <img src="{{ product.photo_2.url }}" alt="" class="img-fluid">
+                    </a>
+                </div>
+                {% endif %}
+                {% if product.photo_3 %}
+                <div class="col-md-2">
+                    <a href="{{ product.photo_3.url }}" data-lightbox="home-images">
+                        <img src="{{ product.photo_3.url }}" alt="" class="img-fluid">
+                    </a>
+                </div>
+                {% endif %}
+                {% if product.photo_4 %}
+                <div class="col-md-2">
+                    <a href="{{ product.photo_4.url }}" data-lightbox="home-images">
+                        <img src="{{ product.photo_4.url }}" alt="" class="img-fluid">
+                    </a>
+                </div>
+                {% endif %}
+                {% if product.photo_5 %}
+                <div class="col-md-2">
+                    <a href="{{ product.photo_5.url }}" data-lightbox="home-images">
+                        <img src="{{ product.photo_5.url }}" alt="" class="img-fluid">
+                    </a>
+                </div>
+                {% endif %}
+                {% if product.photo_6 %}
+                <div class="col-md-2">
+                    <a href="{{ product.photo_6.url }}" data-lightbox="home-images">
+                        <img src="{{ product.photo_6.url }}" alt="" class="img-fluid">
+                    </a>
+                </div>
+                {% endif %}
+          </div>
+          <!-- Fields -->
+          <div class="row mb-5 fields">
+            <div class="col-md-12">
+              <ul class="list-group list-group-flush">
+                  <li class="list-group-item text-secondary">
+                      <i class="fas fa-map"></i> Deskripsi:
+                      <p>
+                      <span class="float-left">{{ product.description|safe }}</span>
+                      </p>
+                  </li>
+                  <li class="list-group-item text-secondary">
+                      <i class="fas fa-money-bill-alt"></i> Harga:
+                      <span class="float-right">Rp.{{ product.price | intcomma }}</span>
+                  </li>
+                  <li class="list-group-item text-secondary">
+                      <i class="fas fa-calendar"></i> Tgl upload:
+                      <span class="float-right">{{ product.create_date | naturalday }}</span>
+                  </li>
+                  <li class="list-group-item text-secondary">
+                      <i class="fas fa-bed"></i> Kategori:
+                      <span class="float-right">{{ product.category }}
+                      </span>
+                  </li>
+              </ul>
+            </div>
+
+
+          </div>
+
+        </div>
+
+          <div class="col-md-3">
+          <div class="card mb-3">
+            <img class="card-img-top" src="{% static 'img/erna.jpg' %}" alt="Realtor of this">
+            <div class="card-body">
+              <h5 class="card-title">Pemilik produk</h5>
+              <h6 class="text-secondary">Erna Sri Rahmawati</h6>
+            </div>
+          </div>
+          <button class="btn-success btn-block btn-lg">
+              <i class="fab fa-whatsapp"></i> Hubungi kami
+          </button>
+          </div>
+
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

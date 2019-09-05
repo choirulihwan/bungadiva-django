@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+
+{% load humanize %}
+
+{% block title %} | Search Result {% endblock %}
+
+{% block content %}
+<section id="showcase-inner" class="showcase-search text-white py-5">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-12">
+                <form action="{% url 'search' %}">
+                         <!-- Form Row 1 -->
+              <div class="form-row">
+                <div class="col-md-3 mb-3">
+                  <label class="sr-only">Keywords</label>
+                  <input type="text" name="keywords" class="form-control" placeholder="Keyword (Pool, Garage, etc)" value="{{ values.keywords }}">
+                </div>
+
+                  <div class="col-md-3 mb-3">
+                  <select name="categories" class="form-control" id="categories">
+                    <option selected="true" disabled="disabled">Kategori (All)</option>
+                     {% for category in category_choices %}
+                        <option value="{{ category }}"
+                                {% if category == values.categories %}
+                                    selected
+                                {% endif %}
+                                >{{ category }}</option>
+                     {% endfor %}
+                  </select>
+                </div>
+
+
+                <div class="col-md-3 mb-3">
+                  <label class="sr-only">State</label>
+                  <select name="status" class="form-control">
+                    <option selected="true" disabled="disabled">Status (All)</option>
+                    {% for key,value in status_choices.items %}
+                      <option value="{{ key }}"
+                                {% if key == values.status %}
+                                    selected
+                                {% endif %}
+                                >{{ value }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+
+                <div class="col-md-3 mb-3">
+                  <select name="price" class="form-control" id="type">
+                    <option selected="true" disabled="disabled">Price (All)</option>
+                    {% for key,value in price_choices.items %}
+                      <option value="{{ key }}"
+                                {% if key == values.price %}
+                                    selected
+                                {% endif %}
+                                >{{ value }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+              </div>
+
+                    <button class="btn btn-secondary btn-block mt-4" type="submit">Submit form</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Breadcrumb -->
+<section id="bc" class="mt-3">
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="{% url 'index' %}">
+                        <i class="fas fa-home"></i> Beranda</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="{% url 'products' %}"> Daftar Produk</a>
+                </li>
+                <li class="breadcrumb-item active"> Hasil Pencarian</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+  <!-- Product -->
+  <section id="listings" class="py-5">
+    <div class="container">
+      <h3 class="text-center mb-3">Latest Products</h3>
+      <div class="row">
+
+        {% if products %}
+        {% for product in products %}
+
+        <!-- Listing 1 -->
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="card listing-preview">
+            <img class="card-img-top" src="{{ product.photo_main.url }}" alt="" height="400" width="400">
+            <div class="card-img-overlay">
+              <h2>
+                <span class="badge badge-secondary text-white">${{ product.price | intcomma }}</span>
+              </h2>
+            </div>
+            <div class="card-body">
+              <div class="listing-heading text-center">
+                <h4 class="text-primary">{{ product.name }}</h4>
+                <p>
+                  <i class="fas fa-map-marker text-secondary"></i> {{ product.category }} </p>
+              </div>
+              <hr>
+              <div class="row py-2 text-secondary">
+                <div class="col-12">
+                  <i class="fas fa-user"></i> {{ product.description }}</div>
+              </div>
+              <div class="row text-secondary pb-2">
+                <div class="col-12">
+                  <i class="fas fa-clock"></i> {{ product.create_date | timesince }}</div>
+              </div>
+              <hr>
+              <a href="{% url 'product' product.id %}" class="btn btn-primary btn-block">More Info</a>
+            </div>
+          </div>
+        </div>
+
+        {% endfor %}
+
+        {% else %}
+          <div class="col-md-12"><p>No products available</p></div>
+        {% endif %}
+
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

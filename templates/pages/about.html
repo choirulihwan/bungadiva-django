@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} | About Us {% endblock %}
+
+{% block content %}
+  <section id="showcase-inner" class="py-5 text-white">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-12">
+          <h1 class="display-4">Tentang Bunga Diva</h1>
+          <p class="lead">Website toko bunga dan pakaian wanita muslimah Online</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Breadcrumb -->
+  <section id="bc" class="mt-3">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="{% url 'index' %}">
+              <i class="fas fa-home"></i> Beranda</a>
+          </li>
+          <li class="breadcrumb-item active"> Tentang Kami</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <section id="about" class="py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Anda mencari bunga plastik dan pakaian wanita muslimah?</h2>
+          <p class="lead">Anda datang ke tempat yang benar. Bunga Diva adalah solusinya.</p>
+          <img src="{% static 'img/about.jpg' %}" alt="">
+          <p class="mt-4">Toko online Bunga Diva menawarkan bunga hiasan rumah dari plastik untuk memperindah interior
+              rumah anda. Selain itu bagi anda muslimah yang ingin tampil stylish, kece dan kekinian, anda bisa
+              menggunakan gamis, jilbab yang tersedia di Bunga Diva.
+              <br/>Jadikan hidup anda semakin bermakna dengan koleksi dari Bunga Diva.
+          </p>
+        </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Work -->
+  <section id="work" class="bg-dark text-white text-center">
+    <h2 class="display-4">Kami melayani pesanan</h2>
+    <h4>Koleksi produk bunga kami tidak sesuai selera anda. Jangan khawatir, kami siap membuat bunga plastik custom
+        sesuai pesanan anda dengan harga yang terjangkau.<br/> Jangan ragu untuk kontak kami.
+    </h4>
+    <hr>
+    <a href="{% url 'products' %}" class="btn btn-secondary text-white btn-lg">Daftar Produk</a>
+  </section>
+
+  <!-- Team -->
+  <section id="team" class="py-5">
+    <div class="container">
+      <h2 class="text-center">Our Team</h2>
+      <div class="row text-center">
+
+        <div class="col-md-6">
+          <img src="{% static 'img/choirul.jpg' %}" style="width:50%" alt="" class="rounded-circle mb-3">
+          <h4>Choirul ihwan</h4>
+          <p class="text-success">
+            <i class="fas fa-award text-success mb-3"></i> Co-Owner</p>
+          <hr>
+          <p>
+            <i class="fas fa-phone"></i> 087839806882</p>
+          <p>
+            <i class="fas fa-envelope-open"></i> aristhu_oracle@yahoo.com</p>
+        </div>
+
+          <div class="col-md-6">
+          <img src="{% static 'img/erna.jpg' %}" alt="" style="width:50%" class="rounded-circle mb-3">
+          <h4>Erna Sri Rahmwati Emcha</h4>
+          <p class="text-success">
+            <i class="fas fa-award text-success mb-3"></i> Owner</p>
+          <hr>
+          <p>
+            <i class="fas fa-phone"></i> 087838858913</p>
+          <p>
+            <i class="fas fa-envelope-open"></i> erna03@gmail.com</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+{% endblock %}
