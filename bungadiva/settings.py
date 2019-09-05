@@ -134,3 +134,8 @@ MEDIA_URL = '/media/'
 
 #INSTALLED APPS
 INSTALLED_APPS += ('django_summernote',)
+
+try:
+    from .local_settings import *
+except ImportError:
+    pass
