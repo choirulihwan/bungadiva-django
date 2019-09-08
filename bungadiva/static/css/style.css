@@ -74,10 +74,9 @@ img {
     background-color: #4abdac !important;
 }
 
-/*#showcase, #showcase-inner {
-    padding-top: 1rem;
-    min-height: 0px;
-}*/
+#showcase-inner {
+    background: url(../img/building.jpg) no-repeat top center;
+}
 
 #showcase .overlay {
     background: #FC4A1A;
