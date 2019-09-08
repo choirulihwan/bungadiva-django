@@ -99,21 +99,21 @@
             <div class="col-md-12">
               <ul class="list-group list-group-flush">
                   <li class="list-group-item text-secondary">
-                      <i class="fas fa-map"></i> Deskripsi:
+                      <i class="fas fa-map"></i> <span style="color:#000;">Deskripsi:</span>
                       <p>
                       <span class="float-left">{{ product.description|safe }}</span>
                       </p>
                   </li>
                   <li class="list-group-item text-secondary">
-                      <i class="fas fa-money-bill-alt"></i> Harga:
+                      <i class="fas fa-money-bill-alt"></i> <span style="color:#000;">Harga:</span>
                       <span class="float-right">Rp.{{ product.price | intcomma }}</span>
                   </li>
                   <li class="list-group-item text-secondary">
-                      <i class="fas fa-calendar"></i> Tgl upload:
+                      <i class="fas fa-calendar"></i> <span style="color:#000;">Tgl upload:</span>
                       <span class="float-right">{{ product.create_date | naturalday }}</span>
                   </li>
                   <li class="list-group-item text-secondary">
-                      <i class="fas fa-bed"></i> Kategori:
+                      <i class="fas fa-bed"></i> <span style="color:#000;">Kategori:</span>
                       <span class="float-right">{{ product.category }}
                       </span>
                   </li>
@@ -133,8 +133,8 @@
               <h6 class="text-secondary">Erna Sri Rahmawati</h6>
             </div>
           </div>
-          <button class="btn-success btn-block btn-lg">
-              <i class="fab fa-whatsapp"></i> Hubungi kami
+          <button id="btn-whatsapp" class="btn-success btn-block btn-lg">
+              <i class="fab fa-whatsapp"></i> Contact kami
           </button>
           </div>
 
